@@ -1,0 +1,10 @@
+{
+  "name": "dc-trash",
+  "description": "Collect & Summarize DCinside human trashes.",
+  "dependencies": {
+    "progress": "1.x",
+    "cheerio": "^0.20",
+    "request": "2.x",
+    "async": "latest"
+  }
+}
