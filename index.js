@@ -5,29 +5,31 @@ const progress = require('progress')
 
 const Crawler = require('./lib/Crawler')
 
-
-/*let prog = new progress(this.progress.format, {
-  complete: '=',
-  incomplete: ' ',
-  width: 30,
-  total: this.progress.width
-})*/
-
+let prog
 let c = new Crawler('rhythmgame', {
   type: 'page',
-  until: 50
+  until: 10
 })
 
-c.on('start', function(latestId) {
-  console.log(`firstpage id: ${latestId}`)
+c.on('start', function(latestId, total) {
+  console.log(`total page: ${total}`)
+
+  prog = new progress(':title :current/:total? [:bar] :percent, :elapseds, eta :eta, #:cid', {
+   complete: '=',
+   incomplete: ' ',
+   width: 30,
+   total: total
+ })
 })
 
 c.on('progress', function(page, id) {
-  console.log(`${page}p, #${id}`)
+  prog.tick(1, {
+    cid: id
+  })
 })
 
 c.on('complete', function(pages) {
-  console.log(pages.length)
+  console.log(pages)
 })
 
 c.start()
