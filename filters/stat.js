@@ -1,40 +1,38 @@
 'use strict'
 
-class d_Stat {
+module.exports = function timedStat() {
 
-  constructor() {
-    this.count = 0
-    this.hasPicture = 0
-    this.hasId = 0
+  this.count = 0
+  this.hasPicture = 0
+  this.hasId = 0
 
-    this.max = {
-      view: {
-        id: [],
-        value: -1
-      },
-      reply: {
-        id: [],
-        value: -1
-      },
-      recommend: {
-        id: [],
-        value: -1
-      }
+  this.max = {
+    view: {
+      id: [],
+      value: -1
+    },
+    reply: {
+      id: [],
+      value: -1
+    },
+    recommend: {
+      id: [],
+      value: -1
     }
-
-    this.total = {
-      view: 0,
-      reply: 0,
-      recommend: 0
-    }
-
-    this.time = [
-      0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
-    ]
   }
 
-  append(article) {
+  this.total = {
+    view: 0,
+    reply: 0,
+    recommend: 0
+  }
+
+  this.time = [
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+  ]
+
+  this.append = function append(article) {
 
     this.count++
 
@@ -63,7 +61,7 @@ class d_Stat {
     }
     if(this.max.recommend.value < article.recommend) {
       this.max.recommend.value = article.recommend
-      this.max.recommend = [article.id]
+      this.max.recommend.id = [article.id]
     } else if(this.max.recommend.value == article.recommend) {
       this.max.recommend.id.push(article.id)
     }
@@ -71,7 +69,7 @@ class d_Stat {
     this.time[article.date.getHours()]++
   }
 
-  pop() {
+  this.pop = function pop() {
     return {
       count:      this.count,
       hasPicture: this.hasPicture,
@@ -87,7 +85,7 @@ class d_Stat {
     }
   }
 
-}
+  return this
 
-module.exports = new d_Stat()
-module.exports.class = d_Stat
+
+}
