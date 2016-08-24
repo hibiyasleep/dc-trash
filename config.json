@@ -1,0 +1,21 @@
+{
+  "filters": {
+    "count": {
+      "pseudoFixed": {
+        "#bangbae": "^방배((?!동후장남).)*$",
+        "#ome": "오메|ome$",
+        "#babel": "바벨$",
+        "#feelso": "^feel",
+        "1nthe": "^윤|윤$",
+        "jgh6760": "^face\\?$",
+        "katatsu08": "ㅋㅌㅊ|코타츠",
+        "xkdldrj": "호랑ㅇ*잉",
+        "lyh6722": "^펫|메우",
+        "slavenyang": "[닝냥]\\!",
+        "p09917": "ㅇㅂㄷ",
+        "psh103602": "^Ego"
+      }
+    },
+    "stat": true
+  }
+}

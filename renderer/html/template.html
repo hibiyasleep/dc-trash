@@ -1,0 +1,68 @@
+<%
+
+function toGallURI(id, no) {
+  return 'http://gall.dcinside.com/board/view/?id=' + id + '&no=' + no
+}
+function maxExtract(column) {
+  var r = []
+  for(var id of column.id) {
+    var l = ''
+    l += '<b><a href="' + toGallURI(result._gall, id) + '">'
+      + result._dump[id].title
+      + '</a></b> - '
+      + result._dump[id].nickname
+    r.push(l)
+  }
+  return r.join(', ')
+}
+%>
+<% if(result.stat) { %>
+  <% stat = result.stat; %>
+  <ul style="font-family: 'Roboto Mono', monospace; line-height: 1.75em; padding-left: 1em; border-left: 0.5em solid rgba(127, 127, 127, 0.25); list-style: none">
+    <li>
+      수집한 글 수: <b><%= stat.count %></b>
+    </li>
+    <li>
+      <img src="http://nstatic.dcinside.com/dgn/gallery/images/update/icon_picture.png" />:
+      <b><%= stat.hasPicture %></b>글 (<%= (stat.hasPicture / stat.count * 100).toFixed(2) %>%)
+    </li>
+    <li>
+      <img src="http://wstatic.dcinside.com/gallery/skin/gallog/g_fix.gif" />,
+      <img src="http://wstatic.dcinside.com/gallery/skin/gallog/g_default.gif" />:
+      <b><%= stat.hasId %></b>글 (<%= (stat.hasId / stat.count * 100).toFixed(2) %>%)
+    </li>
+    <li>
+      총 합:
+      <ul style="margin-left: 1em; padding-left: 0">
+        <li>조회: <b><%= stat.total.view %></b> (평균 <%= stat.avg.view.toFixed(2) %>) </li>
+        <li>댓글: <b><%= stat.total.reply %></b> (평균 <%= stat.avg.reply.toFixed(2) %>) </li>
+        <li>개추: <b><%= stat.total.recommend %></b> (평균 <%= stat.avg.recommend.toFixed(2) %>) </li>
+      </ul>
+    </li>
+    <li>
+      이번의 게시물:
+      <ul style="margin-left: 1em; padding-left: 0">
+        <li> 조회 <%= stat.max.view.value %>: <%- maxExtract(stat.max.view) %></li>
+        <li> 댓글 <%= stat.max.reply.value %>: <%- maxExtract(stat.max.reply) %></li>
+        <li> 개추 <%= stat.max.recommend.value %>: <%- maxExtract(stat.max.recommend) %></li>
+      </ul>
+    </li>
+    <li>
+      시간대별 통계:
+      <ol start="0" style="margin-left: 0; padding-left: 0; list-style: none">
+        <% var max = Math.max.apply(null, stat.time) %>
+        <% for(var i=0; i<=23; i++) { %>
+        <li> <span style="display:inline-block;width:<%= stat.time[i] / max * 100 %>%;height:1em;background:rgba(255,0,0,0.5);text-align:right"> <%= i %>: <%= stat.time[i] %> </span> </li> <% } %>
+      </ol>
+  </ul>
+<% } %>
+<% if(result.count) { %>
+  <ol style="font-family: 'Roboto Mono', monospace; line-height: 1.75em; padding-left: 4em">
+  <%  for(var n=1; n<=300; n++) { var i = result.count[n]; if(!i) continue; %>
+  <li style="list-style-type:decimal!important"> <b><%= i.nick %></b> <%
+        if(i.fixed && i.fixed[0] !== '#') {
+          %><span style="padding: 0 0.5ex;background:#888;color:white;">g</span><%
+        } %> <%= i.count %>글 </li>
+  <%  } %>
+  </ol>
+<% } %>
