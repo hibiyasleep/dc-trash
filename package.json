@@ -1,10 +1,12 @@
 {
   "name": "dc-trash",
   "description": "Collect & Summarize DCinside human trashes.",
+  "version": "0.1.0",
   "dependencies": {
     "progress": "1.x",
     "cheerio": "^0.20",
     "request": "2.x",
-    "async": "latest"
+    "async": "latest",
+    "ejs": "2.x"
   }
 }
