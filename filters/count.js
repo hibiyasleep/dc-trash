@@ -23,10 +23,22 @@ module.exports = function nickCount(option) {
     this.parsePseudoFixed = function pseudoFixedDisabled() { return false }
   }
 
+  if(option.alias) {
+    this.alias = option.alias
+    this.getAlias = function getAlias(id) {
+      if(id in this.alias)
+        return this.alias[id]
+      else
+        return id
+    }
+  } else {
+    this.getAlias = function aliasDisabled(id) { return id }
+  }
+
   this.append = function append(article) {
 
     let p = this.parsePseudoFixed(article.nickname)
-    let id = p || article.authorId
+    let id = this.getAlias(p || article.authorId)
 
     // (pseudo-) fixed?
     if(id) {

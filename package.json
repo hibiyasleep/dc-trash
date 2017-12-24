@@ -6,7 +6,7 @@
     "progress": "1.x",
     "cheerio": "^0.20",
     "request": "2.x",
-    "async": "latest",
+    "async": "^2.0.5",
     "ejs": "2.x"
   }
 }

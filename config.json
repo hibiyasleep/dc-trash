@@ -4,16 +4,30 @@
       "pseudoFixed": {
         "#bangbae": "^방배((?!동후장남).)*$",
         "#ome": "오메|ome$",
-        "#babel": "바벨$",
+        "#babel": "바벨;?",
         "#feelso": "^feel",
         "1nthe": "^윤|윤$",
         "jgh6760": "^face\\?$",
         "katatsu08": "ㅋㅌㅊ|코타츠",
         "xkdldrj": "호랑ㅇ*잉",
-        "lyh6722": "^펫|메우",
+        "lyh6722": "^펫",
         "slavenyang": "[닝냥]\\!",
-        "p09917": "ㅇㅂㄷ",
-        "psh103602": "^Ego"
+        "p09917": "^ㅇㅂㄷ$",
+        "psh103602": "^Ego",
+        "minec24": "해커돌 ?3호",
+        "um624": "^DTD$",
+        "lhk24": "^ㄹㅇㅅㅇ$",
+        "rigentem": "^달나라봊목이$",
+        "#feelso": "^치호좋아$"
+      },
+      "alias": {
+        "elsonghabnida": "saymyname",
+        "saymyname2": "saymyname",
+        "inti7a": "inti7",
+        "ufwsss": "dlwnsgml0095",
+        "cute90": "ketonuce",
+        "rigentem": "mad1590",
+        "wbflzmfltm92": "mad1590"
       }
     },
     "stat": true

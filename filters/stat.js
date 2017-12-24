@@ -66,7 +66,13 @@ module.exports = function timedStat() {
       this.max.recommend.id.push(article.id)
     }
 
-    this.time[article.date.getHours()]++
+    let date
+    if(typeof article.date === 'string') {
+      date = new Date(article.date)
+    } else {
+      date = article.date
+    }
+    this.time[date.getHours()]++
   }
 
   this.pop = function pop() {
